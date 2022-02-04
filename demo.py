@@ -47,10 +47,11 @@ def download_testcases():
    pb_arr = []
    for i in url:
       pb_arr.append(i)
+   # print(pb_arr)
 
-#    print(pb_arr)
-   pb_char = pb_arr[len(pb_arr) - 1]
-   
+   pb_char = pb_arr[len(pb_arr) - 1] # initialising character
+   if pb_char == '1' or pb_char == '2':
+    pb_char = pb_arr[len(pb_arr) - 2] + pb_arr[len(pb_arr) - 1]
 
    sample_testcases = driver.find_element(By.XPATH, "//div[@class='sample-tests']").text
    sample_testcases = sample_testcases + "\nabhijayrajvansh"
