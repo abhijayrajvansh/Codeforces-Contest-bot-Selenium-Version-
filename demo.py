@@ -49,7 +49,7 @@ def download_testcases():
    for i in url:
       pb_arr.append(i)
 
-   print(pb_arr)
+#    print(pb_arr)
    pb_char = pb_arr[len(pb_arr) - 1]
    
 
