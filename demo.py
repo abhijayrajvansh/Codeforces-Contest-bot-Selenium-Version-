@@ -1,6 +1,6 @@
 #/
 #    author:   abhijayrajvansh
-#    created:  04.02.2022 12:20:33
+#    created:  05.02.2022 01:49:50
 #/
 from random import sample
 from unittest import TestCase
@@ -8,7 +8,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options #to by-pass chrome broswer notification, and other stuff
 from selenium.webdriver.common.by import By
-# from testcases_downloader import download_testcases
 import os
 import datetime
 import time
