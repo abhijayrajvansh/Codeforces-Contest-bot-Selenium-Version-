@@ -1,6 +1,6 @@
 #/
 #    author:   abhijayrajvansh
-#    created:  05.02.2022 01:49:44
+#    created:  05.02.2022 01:49:50
 #/
 from random import sample
 from unittest import TestCase
@@ -14,7 +14,7 @@ import time
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 global url
 url = input("Enter The Codeforces Contest Link : ")
-url = "https://codeforces.com/contest/1632/"
+# url = "https://codeforces.com/contest/1632/"
 
 contest_name = ""
 for char in url:
@@ -27,7 +27,7 @@ CF_Path = "/Users/abhijayrajvansh/desktop/onlineJudge/codeforces/" + contest_nam
 try : 
     os.mkdir(CF_Path)
 except FileExistsError:
-    print("Contest folder already exists")
+    print("Downloading TestCases...")
 
 pwd = os.getcwd()
 PATH = Service(pwd + "/chromedriver")
@@ -69,7 +69,7 @@ def download_testcases():
    try : 
     os.mkdir(curr_prob_path)
    except FileExistsError:
-    print("Contest folder already exists")
+    print("Downloading TestCases...")
 
    inputfile = open(curr_prob_path + "/input.txt", "w")
    outputfile = open(curr_prob_path + "/output.txt", "w")
