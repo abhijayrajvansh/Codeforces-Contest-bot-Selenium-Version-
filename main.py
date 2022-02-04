@@ -2,6 +2,7 @@
 #    author:   abhijayrajvansh
 #    created:  04.02.2022 12:20:33
 #/
+from unittest import TestCase
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options #to by-pass chrome broswer notification, and other stuff
@@ -26,8 +27,13 @@ chromeOptions.add_argument("--disable-notifications") # chromeOptions.add_experi
 driver = webdriver.Chrome(service = PATH, options = chromeOptions) # driver.maximize_window() driver.minimize_window()
 driver.get(url) # launches the broswer and open url
 
+def download_testcases():
+    testcases_data = driver.find_element(By.XPATH, "//div[@class='sample-tests']").text
+    print(testcases_data)
+
 def problem_A():
     driver.get(url + "/problem/A")
+    download_testcases()
     driver.get(url + "/problem/A1")
     driver.get(url + "/problem/A2")
 
@@ -64,8 +70,8 @@ def All_Problems():
     problem_E()
     problem_F()
 
-All_Problems()
-
+# All_Problems()
+problem_A()
 
 
 
