@@ -1,27 +1,55 @@
-# data = "Example\ninput\nCopy\n4\n1\n1\n2\n10\n2\n01\n4\n1010\noutput\nCopy\nYES\nYES\nYES\nNO"
-import requests
-from bs4 import BeautifulSoup
 
-url = 'https://athletics.baruch.cuny.edu/sports/mens-swimming-and-diving/roster' #sample url
+# def download_testcases():
+#    sample_testcases = "Example\ninput\nCopy\n4\n1\n1\n2\n10\n2\n01\n4\n1010\noutput\nCopy\nYES\nYES\nYES\nNO"
+#    textfile = open("input.txt", "w")
+#    count = 0
+#    for i in sample_testcases: 
+#       if count >= 3: 
+#          textfile.write(i)
+#       if i == '\n':
+#          count += 1
+#       if i == 'o' and i+1 == 'u' : 
+#          break
+#          textfile.close()
 
-page = requests.get(url)
-soup = BeautifulSoup(page.content, 'html.parser')
+# download_testcases()
 
-#Creating empty lists to hold the heights in inches and original scraped heights
-height_inches = []
-height_list = []
+from random import sample
 
-heights = soup.find_all('span', class_= "sidearm-roster-player-height")
-heights = "Example\ninput\nCopy\n4\n1\n1\n2\n10\n2\n01\n4\n1010\noutput\nCopy\nYES\nYES\nYES\nNO"
-print(heights)
 
-# For some reason, the 23 heights printed twice, hence -23 from the length
-for i in range(0, (len(heights)-23)):
-  {
-      print(heights[i].get_text())
-  }
-# ^This line of code allows me to see all the heights in a normal list^
+def download_testcases():
+   sample_testcases = "Example\ninput\nCopy\n4\n1\n1\n2\n10\n2\n01\n4\n1010\noutput\nCopy\nYES\nYES\nYES\nNO"
+   # sample_testcases = driver.find_element(By.XPATH, "//div[@class='sample-tests']").text
+   sample_testcases = sample_testcases + "\nabhijayrajvansh"
+   arr = []
+   
+   temp = ""
+   for i in sample_testcases:
+      if i == '\n':
+         arr.append(temp)
+         temp = ""
+      else:
+         temp += i
+   print(arr)
 
-#Trying to append the newly found heights in a list
-height_list.append(heights[0])
-print(height_list)
+
+   inputfile = open("input.txt", "w")
+   outputfile = open("output.txt", "w")
+
+   n = len(arr) 
+   i = 3
+   while True:
+      if arr[i] == "output":
+         break
+      inputfile.write(arr[i] + '\n')
+      i += 1
+
+   j = i + 2
+   while j < n:
+      outputfile.write(arr[j] + '\n')
+      j += 1
+   
+
+download_testcases()
+
+

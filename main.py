@@ -13,8 +13,19 @@ import datetime
 import time
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 global url
-url = input("Enter The Codeforces Contest Link : [Press Return For Default]")
+url = input("Enter The Codeforces Contest Link : ")
 url = "https://codeforces.com/contest/1632/"
+
+contest_name = ""
+for char in url:
+   if char.isdigit():
+      contest_name += char
+print("Contest No. : " + contest_name)
+CF_Path = "/Users/abhijayrajvansh/desktop/onlineJudge/codeforces/" + contest_name
+try : 
+    os.mkdir(CF_Path)
+except FileExistsError:
+    print("Contest folder already exists")
 
 pwd = os.getcwd()
 PATH = Service(pwd + "/chromedriver")
@@ -27,17 +38,6 @@ chromeOptions.add_argument("--disable-notifications") # chromeOptions.add_experi
 # driver setup:
 driver = webdriver.Chrome(service = PATH, options = chromeOptions) # driver.maximize_window() driver.minimize_window()
 driver.get(url) # launches the broswer and open url
-
-def linear_search(data):
-    print()
-
-def download_testcases():
-    sample_testcases = driver.find_element(By.XPATH, "//div[@class='sample-tests']").text
-    io_data = []
-    i = 0
-    for i in range(0, (len(sample_testcases))):
-        io_data.append(sample_testcases[i])
-    print(io_data)
 
 def problem_A():
     driver.get(url + "/problem/A")
@@ -86,6 +86,14 @@ def problem_F():
     download_testcases()
     driver.get(url + "/problem/F2")
     download_testcases()
+
+def download_testcases():
+    sample_testcases = driver.find_element(By.XPATH, "//div[@class='sample-tests']").text
+    io_data = []
+    for i in range(0, (len(sample_testcases))):
+        io_data.append(sample_testcases[i])
+    
+    print(io_data)
 
 def All_Problems():
     problem_A()
