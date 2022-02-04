@@ -1,25 +1,26 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options #to by-pass chrome broswer notification, and other stuff
+from selenium.webdriver.common.by import By
+import os
 
-# def download_testcases():
-#    sample_testcases = "Example\ninput\nCopy\n4\n1\n1\n2\n10\n2\n01\n4\n1010\noutput\nCopy\nYES\nYES\nYES\nNO"
-#    textfile = open("input.txt", "w")
-#    count = 0
-#    for i in sample_testcases: 
-#       if count >= 3: 
-#          textfile.write(i)
-#       if i == '\n':
-#          count += 1
-#       if i == 'o' and i+1 == 'u' : 
-#          break
-#          textfile.close()
+url = input("Enter The URL : ")
 
-# download_testcases()
+pwd = os.getcwd()
+PATH = Service(pwd + "/chromedriver")
 
-from random import sample
+# Handling Chrome Window with Options:
+chromeOptions = Options()
+chromeOptions.add_argument("--disable-extensions")
+chromeOptions.add_argument("--disable-notifications") # chromeOptions.add_experimental_option("prefs", { "profile.default_content_setting_values.notifications": 2 }) 
 
+# driver setup:
+driver = webdriver.Chrome(service = PATH, options = chromeOptions) # driver.maximize_window() driver.minimize_window()
+driver.get(url) # launches the broswer and open url
 
 def download_testcases():
-   sample_testcases = "Example\ninput\nCopy\n4\n1\n1\n2\n10\n2\n01\n4\n1010\noutput\nCopy\nYES\nYES\nYES\nNO"
-   # sample_testcases = driver.find_element(By.XPATH, "//div[@class='sample-tests']").text
+   # sample_testcases = "Example\ninput\nCopy\n4\n1\n1\n2\n10\n2\n01\n4\n1010\noutput\nCopy\nYES\nYES\nYES\nNO"
+   sample_testcases = driver.find_element(By.XPATH, "//div[@class='sample-tests']").text
    sample_testcases = sample_testcases + "\nabhijayrajvansh"
    arr = []
    
@@ -31,7 +32,6 @@ def download_testcases():
       else:
          temp += i
    print(arr)
-
 
    inputfile = open("input.txt", "w")
    outputfile = open("output.txt", "w")
@@ -49,7 +49,6 @@ def download_testcases():
       outputfile.write(arr[j] + '\n')
       j += 1
    
-
 download_testcases()
 
 
