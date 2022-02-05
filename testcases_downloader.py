@@ -20,6 +20,14 @@ chromeOptions.add_argument("--disable-notifications") # chromeOptions.add_experi
 driver = webdriver.Chrome(service = PATH, options = chromeOptions) # driver.maximize_window() driver.minimize_window()
 driver.get(url) # launches the broswer and open url
 
+def linear_search (arr, element):
+
+   count = 0
+   for i in range(len(arr)) :
+      if arr[i] == element:
+         count += 1
+   return count
+   
 def download_testcases():
 
    # initialising URL as elements into an array list
@@ -35,7 +43,7 @@ def download_testcases():
    sample_testcases = sample_testcases + "\nabhijayrajvansh"
    print()
    print(sample_testcases)
-   
+
 
    # initialising scrapped data testcases into an array list
    arr = []
@@ -49,8 +57,20 @@ def download_testcases():
    print('\n')
    print(arr) 
 
+   # Counting no. of testcases
+   no_of_testcases = linear_search(arr, "input")
+   print("\nTotal no of testcases : " + str(no_of_testcases) + '\n')
+
+   
+   # creating input & output files
+   files = []
+   for i in range(1, no_of_testcases + 1):
+      print(i)
+      
+      
 
 
+   
 
 
    inputfile = open("input.txt", "w")
@@ -70,5 +90,6 @@ def download_testcases():
       j += 1
    
 download_testcases()
+
 
 
