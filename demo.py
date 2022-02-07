@@ -1,16 +1,13 @@
 #/
 #    author:   abhijayrajvansh
-#    created:  07.02.2022 22:59:25
+#    created:  08.02.2022 00:26:08
 #/
-from random import sample
-from unittest import TestCase
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options #to by-pass chrome broswer notification, and other stuff
 from selenium.webdriver.common.by import By
+from colorama import Fore
 import os
-import datetime
-import time
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 global url
 url = input("Enter The Codeforces Contest Link : ")
@@ -74,21 +71,18 @@ def download_testcases():
          temp += i
 
    # print(arr)
+   no_of_testcases = linear_search(arr, "input")
+
    curr_prob_path = CF_Path + '/' + pb_char
    try : 
     os.mkdir(curr_prob_path)
    except FileExistsError:
-    print("Downloading TestCases...")
-
-    no_of_testcases = linear_search(arr, "input")
-
-    print("\nTotal no of testcases : " + str(no_of_testcases) + '\n')
+    print("Downloading " + pb_char + "... (Testcases Found: " + f'{Fore.GREEN}',str(no_of_testcases), f'{Fore.WHITE}' + ')')
 
     if no_of_testcases == 3:
       sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
       sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
       sample_input_2 = open(curr_prob_path + "/sample_input_2.txt", "w")
-
       sample_output_2 = open(curr_prob_path + "/sample_output_2.txt", "w")
       sample_input_3 = open(curr_prob_path + "/sample_input_3.txt", "w")
       sample_output_3 = open(curr_prob_path + "/sample_output_3.txt", "w")
@@ -105,7 +99,7 @@ def download_testcases():
          if arr[i] == "input" or arr[i] == "output":
             i += 2
             file_num += 1
-         
+        
          if file_num >= 0:
             array_file[file_num].write(arr[i] + '\n')
 
@@ -155,8 +149,6 @@ def download_testcases():
 
             i += 1
 
-
-
 def problem_A():
     driver.get(url + "/problem/A")
     download_testcases()
@@ -204,7 +196,6 @@ def problem_F():
     download_testcases()
     driver.get(url + "/problem/F2")
     download_testcases()
-
 
 problem_A()
 problem_B()

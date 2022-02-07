@@ -1,9 +1,5 @@
-from tkinter import E
+from colorama import Fore
 
+value = 2711
 
-char1 = E
-char2 = str(1)
-
-char3 = char1 + char2
-
-print(char3)
+print("Value is equal to:"+f'{Fore.GREEN}',str(value))

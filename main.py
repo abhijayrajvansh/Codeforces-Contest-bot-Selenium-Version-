@@ -1,16 +1,16 @@
+from email.mime import audio
+
+
 #/
 #    author:   abhijayrajvansh
-#    created:  07.02.2022 23:44:33
+#    created:  08.02.2022 00:26:08
 #/
-from random import sample
-from unittest import TestCase
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options #to by-pass chrome broswer notification, and other stuff
 from selenium.webdriver.common.by import By
+from colorama import Fore
 import os
-import datetime
-import time
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 global url
 url = input("Enter The Codeforces Contest Link : ")
@@ -74,14 +74,13 @@ def download_testcases():
          temp += i
 
    # print(arr)
+   no_of_testcases = linear_search(arr, "input")
+
    curr_prob_path = CF_Path + '/' + pb_char
    try : 
     os.mkdir(curr_prob_path)
    except FileExistsError:
-    print("Downloading " + pb_char + " ...")
-
-    no_of_testcases = linear_search(arr, "input")
-    print("Testcases Found : " + str(no_of_testcases) + '\n')
+    print("Downloading " + pb_char + "... (Testcases Found: " + f'{Fore.GREEN}',str(no_of_testcases), f'{Fore.WHITE}' + ')')
 
     if no_of_testcases == 3:
       sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
