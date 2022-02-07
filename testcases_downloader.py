@@ -6,8 +6,8 @@ from selenium.webdriver.common.by import By
 # from demo import url
 import os
 
-# url = input("Enter The Problem URL : ")
-url = "https://codeforces.com/problemset/problem/1634/F"
+url = input("Enter The Problem URL : ")
+# url = "https://codeforces.com/problemset/problem/1634/F"
 
 pwd = os.getcwd()
 PATH = Service(pwd + "/chromedriver")
@@ -62,22 +62,21 @@ def download_testcases():
    # Counting no. of testcases
    no_of_testcases = linear_search(arr, "input")
    #test_update:
-   # no_of_testcases = 1
+   # no_of_testcases = 2
    print("\nTotal no of testcases : " + str(no_of_testcases) + '\n')
 
-   #no of testcases == 1
-   if no_of_testcases == 2:
+   if no_of_testcases == 3:
       sample_input_1 = open("sample_input_1.txt", "w")
       sample_output_1 = open("sample_output_1.txt", "w")
       sample_input_2 = open("sample_input_2.txt", "w")
       sample_output_2 = open("sample_output_2.txt", "w")
+      sample_input_3 = open("sample_input_3.txt", "w")
+      sample_output_3 = open("sample_output_3.txt", "w")
 
-      array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2]
+      array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2, sample_input_3, sample_output_3]
 
       n = len(arr)
       file_num = -1
-      count = 0
-      br = no_of_testcases * 2
       i = 0
       while True:       
          if i == n:
@@ -90,7 +89,29 @@ def download_testcases():
          if file_num >= 0:
             array_file[file_num].write(arr[i] + '\n')
 
+         i += 1
 
+   if no_of_testcases == 2:
+      sample_input_1 = open("sample_input_1.txt", "w")
+      sample_output_1 = open("sample_output_1.txt", "w")
+      sample_input_2 = open("sample_input_2.txt", "w")
+      sample_output_2 = open("sample_output_2.txt", "w")
+
+      array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2]
+
+      n = len(arr)
+      file_num = -1
+      i = 0
+      while True:       
+         if i == n:
+            break
+
+         if arr[i] == "input" or arr[i] == "output":
+            i += 2
+            file_num += 1
+         
+         if file_num >= 0:
+            array_file[file_num].write(arr[i] + '\n')
 
          i += 1
 
@@ -98,6 +119,24 @@ def download_testcases():
    if no_of_testcases == 1:
       sample_input_1 = open("sample_input_1.txt", "w")
       sample_output_1 = open("sample_output_1.txt", "w")
+
+      array_file = [sample_input_1, sample_output_1]
+
+      n = len(arr)
+      file_num = -1
+      i = 0
+      while True:       
+         if i == n:
+            break
+
+         if arr[i] == "input" or arr[i] == "output":
+            i += 2
+            file_num += 1
+         
+         if file_num >= 0:
+            array_file[file_num].write(arr[i] + '\n')
+
+         i += 1
 
 
         
