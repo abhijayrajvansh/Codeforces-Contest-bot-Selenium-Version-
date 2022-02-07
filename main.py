@@ -1,6 +1,6 @@
 #/
 #    author:   abhijayrajvansh
-#    created:  05.02.2022 02:18:22
+#    created:  07.02.2022 23:44:33
 #/
 from random import sample
 from unittest import TestCase
@@ -14,7 +14,6 @@ import time
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 global url
 url = input("Enter The Codeforces Contest Link : ")
-# url = "https://codeforces.com/contest/1632/"
 
 contest_name = ""
 for char in url:
@@ -41,9 +40,18 @@ chromeOptions.add_argument("--disable-notifications") # chromeOptions.add_experi
 driver = webdriver.Chrome(service = PATH, options = chromeOptions) # driver.maximize_window() driver.minimize_window()
 driver.get(url) # launches the broswer and open url
 
+def linear_search (arr, element):
+
+   counter = 0
+   for i in range(len(arr)) :
+      if arr[i] == element:
+         counter += 1
+   return counter
+
 def download_testcases():
 
    url = driver.current_url
+   # initialising URL as elements into an array list
    pb_arr = []
    for i in url:
       pb_arr.append(i)
@@ -64,29 +72,86 @@ def download_testcases():
          temp = ""
       else:
          temp += i
-   # print(arr)
 
+   # print(arr)
    curr_prob_path = CF_Path + '/' + pb_char
    try : 
     os.mkdir(curr_prob_path)
    except FileExistsError:
-    print("Downloading TestCases...")
+    print("Downloading " + pb_char + " ...")
 
-   inputfile = open(curr_prob_path + "/input.txt", "w")
-   outputfile = open(curr_prob_path + "/output.txt", "w")
+    no_of_testcases = linear_search(arr, "input")
+    print("Testcases Found : " + str(no_of_testcases) + '\n')
 
-   n = len(arr) 
-   i = 3
-   while True:
-      if arr[i] == "output":
-         break
-      inputfile.write(arr[i] + '\n')
-      i += 1
+    if no_of_testcases == 3:
+      sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
+      sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
+      sample_input_2 = open(curr_prob_path + "/sample_input_2.txt", "w")
+      sample_output_2 = open(curr_prob_path + "/sample_output_2.txt", "w")
+      sample_input_3 = open(curr_prob_path + "/sample_input_3.txt", "w")
+      sample_output_3 = open(curr_prob_path + "/sample_output_3.txt", "w")
 
-   j = i + 2
-   while j < n:
-      outputfile.write(arr[j] + '\n')
-      j += 1
+      array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2, sample_input_3, sample_output_3]
+
+      n = len(arr)
+      file_num = -1
+      i = 0
+      while True:       
+         if i == n:
+            break
+
+         if arr[i] == "input" or arr[i] == "output":
+            i += 2
+            file_num += 1
+        
+         if file_num >= 0:
+            array_file[file_num].write(arr[i] + '\n')
+
+         i += 1
+
+    if no_of_testcases == 2:
+        sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
+        sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
+        sample_input_2 = open(curr_prob_path + "/sample_input_2.txt", "w")
+        sample_output_2 = open(curr_prob_path + "/sample_output_2.txt", "w")
+
+        array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2]
+        n = len(arr)
+        file_num = -1
+        i = 0
+        while True:       
+            if i == n:
+                break
+
+            if arr[i] == "input" or arr[i] == "output":
+                i += 2
+                file_num += 1
+            
+            if file_num >= 0:
+                array_file[file_num].write(arr[i] + '\n')
+
+            i += 1
+    
+    if no_of_testcases == 1:
+        sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
+        sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
+
+        array_file = [sample_input_1, sample_output_1]
+        n = len(arr)
+        file_num = -1
+        i = 0
+        while True:       
+            if i == n:
+                break
+
+            if arr[i] == "input" or arr[i] == "output":
+                i += 2
+                file_num += 1
+            
+            if file_num >= 0:
+                array_file[file_num].write(arr[i] + '\n')
+
+            i += 1
 
 def problem_A():
     driver.get(url + "/problem/A")
@@ -136,15 +201,12 @@ def problem_F():
     driver.get(url + "/problem/F2")
     download_testcases()
 
+problem_A()
+problem_B()
+problem_C()
+problem_D()
+problem_E()
+problem_F()
 
 
-def All_Problems():
-    problem_A()
-    problem_B()
-    problem_C()
-    problem_D()
-    problem_E()
-    problem_F()
-
-All_Problems()
 
