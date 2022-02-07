@@ -1,3 +1,4 @@
+from fileinput import fileno
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options #to by-pass chrome broswer notification, and other stuff
@@ -6,7 +7,7 @@ from selenium.webdriver.common.by import By
 import os
 
 url = input("Enter The Problem URL : ")
-url = "https://codeforces.com/problemset/problem/1633/E"
+url = "https://codeforces.com/problemset/problem/1634/F"
 
 pwd = os.getcwd()
 PATH = Service(pwd + "/chromedriver")
@@ -18,6 +19,7 @@ chromeOptions.add_argument("--disable-notifications") # chromeOptions.add_experi
 
 # driver setup:
 driver = webdriver.Chrome(service = PATH, options = chromeOptions) # driver.maximize_window() driver.minimize_window()
+driver.minimize_window()
 driver.get(url) # launches the broswer and open url
 
 def linear_search (arr, element):
@@ -59,35 +61,84 @@ def download_testcases():
 
    # Counting no. of testcases
    no_of_testcases = linear_search(arr, "input")
+   #test_update:
+   no_of_testcases = 2
    print("\nTotal no of testcases : " + str(no_of_testcases) + '\n')
 
-   
-   # creating input & output files
-   files = []
-   for i in range(1, no_of_testcases + 1):
-      print(i)
+   #no of testcases == 1
+   if no_of_testcases == 2:
+      sample_input_1 = open("sample_input_1.txt", "w")
+      sample_output_1 = open("sample_output_1.txt", "w")
+      sample_input_2 = open("sample_input_2.txt", "w")
+      sample_output_2 = open("sample_output_2.txt", "w")
+
+      array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2]
+
+      n = len(arr)
+      file_num = -1
+      count = 0
+      br = no_of_testcases * 2
+      i = 0
+      n += 1
+      while True:
+         if count == br:
+            break
+         if arr[i] == "output" or arr[i] == "input":
+            i += 2
+            file_num += 1
+            count += 1
+         else:
+            i += 1
+
+         if file_num >= 0:
+            array_file[file_num].write(arr[i] + '\n')
+
+
+        
+
+
+
+
+
+
+
+
       
+
+   #    sample_input_1 = open("sample_input_1.txt", "w")
+   #    sample_output_1 = open("sample_output_1.txt", "w")
+
+   #    n = len(arr) 
+   #    i = 3
+   #    while True:
+   #       if arr[i] == "output":
+   #          break
+   #       sample_input_1.write(arr[i] + '\n')
+   #       i += 1
+
+   #    j = i + 2
+   #    while j < n:
+   #       sample_output_1.write(arr[j] + '\n')
+   #       j += 1
+
+
+
+   # no of testcases  == 2
+   if no_of_testcases == 3:
+      sample_input_1 = open("sample_input_1.txt", "w")
+      sample_input_2 = open("sample_input_2.txt", "w")
+      sample_input_3 = open("sample_input_3.txt", "w")
+
+      sample_output_1 = open("sample_output_1.txt", "w")
+      sample_output_2 = open("sample_output_2.txt", "w")
+      sample_output_3 = open("sample_output_3.txt", "w")
       
 
 
    
 
 
-   inputfile = open("input.txt", "w")
-   outputfile = open("output.txt", "w")
-
-   n = len(arr) 
-   i = 3
-   while True:
-      if arr[i] == "output":
-         break
-      inputfile.write(arr[i] + '\n')
-      i += 1
-
-   j = i + 2
-   while j < n:
-      outputfile.write(arr[j] + '\n')
-      j += 1
+   
    
 download_testcases()
 
