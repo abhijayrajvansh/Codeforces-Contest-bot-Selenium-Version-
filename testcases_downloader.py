@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 # from demo import url
 import os
 
-url = input("Enter The Problem URL : ")
+# url = input("Enter The Problem URL : ")
 url = "https://codeforces.com/problemset/problem/1634/F"
 
 pwd = os.getcwd()
@@ -62,7 +62,7 @@ def download_testcases():
    # Counting no. of testcases
    no_of_testcases = linear_search(arr, "input")
    #test_update:
-   no_of_testcases = 2
+   # no_of_testcases = 1
    print("\nTotal no of testcases : " + str(no_of_testcases) + '\n')
 
    #no of testcases == 1
@@ -79,19 +79,25 @@ def download_testcases():
       count = 0
       br = no_of_testcases * 2
       i = 0
-      n += 1
-      while True:
-         if count == br:
+      while True:       
+         if i == n:
             break
-         if arr[i] == "output" or arr[i] == "input":
+
+         if arr[i] == "input" or arr[i] == "output":
             i += 2
             file_num += 1
-            count += 1
-         else:
-            i += 1
-
+         
          if file_num >= 0:
             array_file[file_num].write(arr[i] + '\n')
+
+
+
+         i += 1
+
+
+   if no_of_testcases == 1:
+      sample_input_1 = open("sample_input_1.txt", "w")
+      sample_output_1 = open("sample_output_1.txt", "w")
 
 
         
