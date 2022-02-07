@@ -7,7 +7,6 @@ from selenium.webdriver.common.by import By
 import os
 
 url = input("Enter The Problem URL : ")
-# url = "https://codeforces.com/problemset/problem/1634/F"
 
 pwd = os.getcwd()
 PATH = Service(pwd + "/chromedriver")
@@ -24,14 +23,15 @@ driver.get(url) # launches the broswer and open url
 
 def linear_search (arr, element):
 
-   count = 0
+   counter = 0
    for i in range(len(arr)) :
       if arr[i] == element:
-         count += 1
-   return count
+         counter += 1
+   return counter
    
 def download_testcases():
 
+   url = driver.current_url
    # initialising URL as elements into an array list
    pb_url_arr = []
    for i in url:
@@ -69,6 +69,7 @@ def download_testcases():
       sample_input_1 = open("sample_input_1.txt", "w")
       sample_output_1 = open("sample_output_1.txt", "w")
       sample_input_2 = open("sample_input_2.txt", "w")
+
       sample_output_2 = open("sample_output_2.txt", "w")
       sample_input_3 = open("sample_input_3.txt", "w")
       sample_output_3 = open("sample_output_3.txt", "w")
@@ -94,6 +95,7 @@ def download_testcases():
    if no_of_testcases == 2:
       sample_input_1 = open("sample_input_1.txt", "w")
       sample_output_1 = open("sample_output_1.txt", "w")
+
       sample_input_2 = open("sample_input_2.txt", "w")
       sample_output_2 = open("sample_output_2.txt", "w")
 
@@ -138,53 +140,7 @@ def download_testcases():
 
          i += 1
 
-
-        
-
-
-
-
-
-
-
-
       
-
-   #    sample_input_1 = open("sample_input_1.txt", "w")
-   #    sample_output_1 = open("sample_output_1.txt", "w")
-
-   #    n = len(arr) 
-   #    i = 3
-   #    while True:
-   #       if arr[i] == "output":
-   #          break
-   #       sample_input_1.write(arr[i] + '\n')
-   #       i += 1
-
-   #    j = i + 2
-   #    while j < n:
-   #       sample_output_1.write(arr[j] + '\n')
-   #       j += 1
-
-
-
-   # no of testcases  == 2
-   if no_of_testcases == 3:
-      sample_input_1 = open("sample_input_1.txt", "w")
-      sample_input_2 = open("sample_input_2.txt", "w")
-      sample_input_3 = open("sample_input_3.txt", "w")
-
-      sample_output_1 = open("sample_output_1.txt", "w")
-      sample_output_2 = open("sample_output_2.txt", "w")
-      sample_output_3 = open("sample_output_3.txt", "w")
-      
-
-
-   
-
-
-   
-   
 download_testcases()
 
 
