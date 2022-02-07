@@ -14,7 +14,6 @@ import time
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 global url
 url = input("Enter The Codeforces Contest Link : ")
-url = "https://codeforces.com/contest/1633/"
 
 contest_name = ""
 for char in url:
