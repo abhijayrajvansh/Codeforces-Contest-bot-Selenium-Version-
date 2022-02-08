@@ -7,10 +7,14 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options #to by-pass chrome broswer notification, and other stuff
 from selenium.webdriver.common.by import By
 from colorama import Fore
+import subprocess
 import os
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 global url
-url = input("Enter The Codeforces Contest Link : ")
+global curr_prob_path
+
+# url = input("Enter The Codeforces Contest Link : ")
+url = 'https://www.codeforces.com/contest/1633'
 
 contest_name = ""
 for char in url:
@@ -46,6 +50,7 @@ def linear_search (arr, element):
    return counter
 
 def download_testcases():
+   global curr_prob_path
 
    url = driver.current_url
    # initialising URL as elements into an array list
@@ -86,6 +91,10 @@ def download_testcases():
       sample_output_2 = open(curr_prob_path + "/sample_output_2.txt", "w")
       sample_input_3 = open(curr_prob_path + "/sample_input_3.txt", "w")
       sample_output_3 = open(curr_prob_path + "/sample_output_3.txt", "w")
+      #solution file:-
+      solution_file_path = curr_prob_path + "/" + pb_char + ".cpp"
+      solution_file = open(solution_file_path, "w")
+      subprocess.run(["code", solution_file_path])
 
       array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2, sample_input_3, sample_output_3]
 
@@ -110,6 +119,10 @@ def download_testcases():
         sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
         sample_input_2 = open(curr_prob_path + "/sample_input_2.txt", "w")
         sample_output_2 = open(curr_prob_path + "/sample_output_2.txt", "w")
+        #solution file:-
+        solution_file_path = curr_prob_path + "/" + pb_char + ".cpp"
+        solution_file = open(solution_file_path, "w")
+        subprocess.run(["code", solution_file_path])
 
         array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2]
         n = len(arr)
@@ -131,6 +144,10 @@ def download_testcases():
     if no_of_testcases == 1:
         sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
         sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
+        #solution file:-
+        solution_file_path = curr_prob_path + "/" + pb_char + ".cpp"
+        solution_file = open(solution_file_path, "w")
+        subprocess.run(["code", solution_file_path])
 
         array_file = [sample_input_1, sample_output_1]
         n = len(arr)
@@ -148,6 +165,7 @@ def download_testcases():
                 array_file[file_num].write(arr[i] + '\n')
 
             i += 1
+
 
 def problem_A():
     driver.get(url + "/problem/A")
