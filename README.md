@@ -7,5 +7,5 @@ Currently Under Development!!
     - creating diff directories        : Status ✅
     - Creating diff sample file texts  : Status ✅
 - solution checker & debugger          : Status ❌
-    - solution creater                 : Status ❌
+    - solution creater                 : Status ✅
 - Solution Parser & submitter          : Status ❌
