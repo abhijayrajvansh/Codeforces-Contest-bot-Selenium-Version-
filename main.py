@@ -223,6 +223,6 @@ problem_E()
 problem_F()
 
 dir = CF_Path + '/a'
-print("Contest Dir: " + dir)
+print("Contest Problem A Dir: " + dir)
 
 
