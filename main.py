@@ -14,7 +14,6 @@ global url
 global curr_prob_path
 
 url = input("Enter The Codeforces Contest Link : ")
-# url = 'https://www.codeforces.com/contest/1633'
 
 contest_name = ""
 for char in url:
@@ -38,7 +37,8 @@ chromeOptions.add_argument("--disable-extensions")
 chromeOptions.add_argument("--disable-notifications") # chromeOptions.add_experimental_option("prefs", { "profile.default_content_setting_values.notifications": 2 }) 
 
 # driver setup:
-driver = webdriver.Chrome(service = PATH, options = chromeOptions) # driver.maximize_window() driver.minimize_window()
+driver = webdriver.Chrome(service = PATH, options = chromeOptions) # driver.maximize_window() 
+driver.minimize_window()
 driver.get(url) # launches the broswer and open url
 
 def linear_search (arr, element):
@@ -222,5 +222,7 @@ problem_D()
 problem_E()
 problem_F()
 
+dir = CF_Path + '/a'
+print("Contest Dir: " + dir)
 
 
