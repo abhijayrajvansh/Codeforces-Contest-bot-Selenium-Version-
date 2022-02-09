@@ -1,6 +1,6 @@
 # Codeforces-Contst-Bot !
 
-© 2013 Abhijay Rajvansh, All rights reserved.
+© 2022 Abhijay Rajvansh, All rights reserved.
 
 # This bot can perform following operations:
 
