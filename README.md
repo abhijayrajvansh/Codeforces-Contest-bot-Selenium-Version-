@@ -1,8 +1,9 @@
-# Codeforces-Contst-Bot
+# Codeforces-Contst-Bot !
 
-Currently Under Development!!
+© 2013 Abhijay Rajvansh, All rights reserved.
 
-- Login to codeforces account          : Status ❌
+# This Bot Can Perform Following Options:
+
 - problems directories creator         : Status ✅
 - testcases downloader                 : Status ✅
     - creating diff directories        : Status ✅
@@ -10,4 +11,3 @@ Currently Under Development!!
 - solution checker & debugger          : Status ✅
     - solution creater                 : Status ✅
 - Testcases Parser                     : Status ✅
-    - solution submitter               : Status ❌
