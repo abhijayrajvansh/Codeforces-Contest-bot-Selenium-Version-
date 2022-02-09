@@ -1,4 +1,4 @@
-# Codeforces-Contst-Bot !
+# Codeforces-Contest-Bot !
 
 © 2022 Abhijay Rajvansh, All rights reserved.
 
