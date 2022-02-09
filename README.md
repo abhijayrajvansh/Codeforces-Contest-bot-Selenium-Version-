@@ -2,7 +2,7 @@
 
 © 2013 Abhijay Rajvansh, All rights reserved.
 
-# This Bot Can Perform Following Options:
+# This bot can perform following operations:
 
 - problems directories creator         : Status ✅
 - testcases downloader                 : Status ✅
