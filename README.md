@@ -6,6 +6,7 @@ Currently Under Development!!
 - testcases downloader                 : Status ✅
     - creating diff directories        : Status ✅
     - Creating diff sample file texts  : Status ✅
-- solution checker & debugger          : Status ❌
+- solution checker & debugger          : Status ✅
     - solution creater                 : Status ✅
-- Solution Parser & submitter          : Status ❌
+- Testcases Parser                     : Status ✅
+    - solution submitter               : Status ❌
