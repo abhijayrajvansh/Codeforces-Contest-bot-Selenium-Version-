@@ -72,6 +72,7 @@
         g++ -std=c++17 -DABHIJAY_DEBUG $argv.cpp -o a.out && gtimeout 3s ./a.out
     end
     function dbrun # runnig and testing sample testcases
+        codeforces
         echo "Compiling main.cpp with G++17..." \n
         cd upsolve
         # # [Clearing Directories...]
