@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 import os
 
 url = input("Enter The Problem URL : ")
+url = "https://codeforces.com/problemset/problem/112/A"
 
 pwd = os.getcwd()
 PATH = Service(pwd + "/chromedriver")
