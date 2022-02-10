@@ -1,12 +1,18 @@
-from fileinput import fileno
+#/
+#    author:   abhijayrajvansh
+#    created:  11.02.2022 00:18:09
+#/
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options #to by-pass chrome broswer notification, and other stuff
 from selenium.webdriver.common.by import By
-# from demo import url
+from colorama import Fore
+import subprocess
 import os
+# from demo import url
 
 url = input("Enter The Problem URL : ")
+url = "https://codeforces.com/problemset/problem/112/A"
 
 pwd = os.getcwd()
 PATH = Service(pwd + "/chromedriver")
@@ -20,6 +26,9 @@ chromeOptions.add_argument("--disable-notifications") # chromeOptions.add_experi
 driver = webdriver.Chrome(service = PATH, options = chromeOptions) # driver.maximize_window() driver.minimize_window()
 driver.minimize_window()
 driver.get(url) # launches the broswer and open url
+
+CF_Path = "/Users/abhijayrajvansh/desktop/onlineJudge/codeforces/upsolve" 
+curr_prob_path = CF_Path 
 
 def linear_search (arr, element):
 
@@ -39,13 +48,11 @@ def download_testcases():
    pb_char = pb_url_arr[len(pb_url_arr) - 1]
    print("Problem No. : " + pb_char)
 
-   
    # scrapped sample testcases with garbage texts
    sample_testcases = driver.find_element(By.XPATH, "//div[@class='sample-tests']").text
    sample_testcases = sample_testcases + "\nabhijayrajvansh"
-   print()
-   print(sample_testcases)
-
+   # print()
+   # print(sample_testcases)
 
    # initialising scrapped data testcases into an array list
    arr = []
@@ -56,23 +63,22 @@ def download_testcases():
          temp = ""
       else:
          temp += i
-   print('\n')
-   print(arr) 
-
-   # Counting no. of testcases
    no_of_testcases = linear_search(arr, "input")
-   #test_update:
-   # no_of_testcases = 2
-   print("\nTotal no of testcases : " + str(no_of_testcases) + '\n')
+   print("Downloading... (Testcases Found:" + f'{Fore.GREEN}',str(no_of_testcases),f'{Fore.WHITE})')
 
    if no_of_testcases == 3:
-      sample_input_1 = open("sample_input_1.txt", "w")
-      sample_output_1 = open("sample_output_1.txt", "w")
-      sample_input_2 = open("sample_input_2.txt", "w")
+      sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
+      sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
+      sample_input_2 = open(curr_prob_path + "/sample_input_2.txt", "w")
 
-      sample_output_2 = open("sample_output_2.txt", "w")
-      sample_input_3 = open("sample_input_3.txt", "w")
-      sample_output_3 = open("sample_output_3.txt", "w")
+      sample_output_2 = open(curr_prob_path + "/sample_output_2.txt", "w")
+      sample_input_3 = open(curr_prob_path + "/sample_input_3.txt", "w")
+      sample_output_3 = open(curr_prob_path + "/sample_output_3.txt", "w")
+      
+      #solution file:-
+      solution_file_path = curr_prob_path + "/" + "main.cpp"
+      solution_file = open(solution_file_path, "w")
+      subprocess.run(["code", solution_file_path])
 
       array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2, sample_input_3, sample_output_3]
 
@@ -93,11 +99,16 @@ def download_testcases():
          i += 1
 
    if no_of_testcases == 2:
-      sample_input_1 = open("sample_input_1.txt", "w")
-      sample_output_1 = open("sample_output_1.txt", "w")
+      sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
+      sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
 
-      sample_input_2 = open("sample_input_2.txt", "w")
-      sample_output_2 = open("sample_output_2.txt", "w")
+      sample_input_2 = open(curr_prob_path + "/sample_input_2.txt", "w")
+      sample_output_2 = open(curr_prob_path + "/sample_output_2.txt", "w")
+
+      #solution file:-
+      solution_file_path = curr_prob_path + "/" + "main.cpp"
+      solution_file = open(solution_file_path, "w")
+      subprocess.run(["code", solution_file_path])
 
       array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2]
 
@@ -119,8 +130,13 @@ def download_testcases():
 
 
    if no_of_testcases == 1:
-      sample_input_1 = open("sample_input_1.txt", "w")
-      sample_output_1 = open("sample_output_1.txt", "w")
+      sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
+      sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
+
+      #solution file:-
+      solution_file_path = curr_prob_path + "/" + "main.cpp"
+      solution_file = open(solution_file_path, "w")
+      subprocess.run(["code", solution_file_path])
 
       array_file = [sample_input_1, sample_output_1]
 
@@ -142,3 +158,6 @@ def download_testcases():
 
       
 download_testcases()
+
+dir = CF_Path 
+print("Contest Problem A Dir: " + dir)
