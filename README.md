@@ -4,6 +4,7 @@
 
 # This bot can perform following operations:
 
+- Particular problem solve             : Status ✅
 - problems directories creator         : Status ✅
 - testcases downloader                 : Status ✅
     - creating diff directories        : Status ✅
