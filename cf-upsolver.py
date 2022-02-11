@@ -157,6 +157,7 @@ def download_testcases():
 
       
 download_testcases()
+driver.quit()
 
 dir = CF_Path 
 print("Contest Problem A Dir: " + dir)
