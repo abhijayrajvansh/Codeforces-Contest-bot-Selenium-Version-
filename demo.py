@@ -215,12 +215,30 @@ def problem_F():
     driver.get(url + "/problem/F2")
     download_testcases()
 
+def problem_G():
+    driver.get(url + "/problem/G")
+    download_testcases()
+    driver.get(url + "/problem/G1")
+    download_testcases()
+    driver.get(url + "/problem/G2")
+    download_testcases()
+
+def problem_H():
+    driver.get(url + "/problem/H")
+    download_testcases()
+    driver.get(url + "/problem/H1")
+    download_testcases()
+    driver.get(url + "/problem/H2")
+    download_testcases()
+
 problem_A()
 problem_B()
 problem_C()
 problem_D()
 problem_E()
 problem_F()
+problem_G()
+problem_H()
 
 dir = CF_Path + '/a'
 print("Contest Problem A Dir: " + dir)
