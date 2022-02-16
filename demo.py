@@ -1,6 +1,6 @@
 #/
 #    author:   abhijayrajvansh
-#    created:  09.02.2022 19:22:23
+#    created:  16.02.2022 12:42:28
 #/
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -13,13 +13,14 @@ import os
 global url
 global curr_prob_path
 
-url = input("Enter The Codeforces Contest Link : ")
+contest_name = input()
 
-contest_name = ""
-for char in url:
-   if char.isdigit():
-      contest_name += char
-print("Contest No. : " + contest_name)
+url = "https://codeforces.com/contest/" + contest_name
+print("contest url : " + url)
+# url = input("Enter The Codeforces Contest Link : ")
+# for char in url:
+#    if char.isdigit():
+#       contest_name += char
 
 CF_Path = "/Users/abhijayrajvansh/desktop/onlineJudge/codeforces/" + contest_name
 
@@ -125,6 +126,38 @@ def download_testcases():
         subprocess.run(["code", solution_file_path])
 
         array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2]
+        n = len(arr)
+        file_num = -1
+        i = 0
+        while True:       
+            if i == n:
+                break
+
+            if arr[i] == "input" or arr[i] == "output":
+                i += 2
+                file_num += 1
+            
+            if file_num >= 0:
+                array_file[file_num].write(arr[i] + '\n')
+
+            i += 1
+
+    if no_of_testcases == 4:
+        sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
+        sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
+        sample_input_2 = open(curr_prob_path + "/sample_input_2.txt", "w")
+        sample_output_2 = open(curr_prob_path + "/sample_output_2.txt", "w")
+        sample_input_3 = open(curr_prob_path + "/sample_input_3.txt", "w")
+        sample_output_3 = open(curr_prob_path + "/sample_output_3.txt", "w")
+        sample_input_4 = open(curr_prob_path + "/sample_input_4.txt", "w")
+        sample_output_4 = open(curr_prob_path + "/sample_output_4.txt", "w")
+        #solution file:-
+        solution_file_path = curr_prob_path + "/" + pb_char + ".cpp"
+        solution_file = open(solution_file_path, "w")
+        subprocess.run(["code", solution_file_path])
+
+        array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2, sample_input_3, sample_output_3, sample_input_4, sample_output_4]
+
         n = len(arr)
         file_num = -1
         i = 0
