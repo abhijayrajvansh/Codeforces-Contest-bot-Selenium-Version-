@@ -16,17 +16,15 @@ global curr_prob_path
 
 
 contest_name = sys.argv[1]
-
 url = "https://codeforces.com/contest/" + contest_name
-
-print("contest url : " + url)
+print("Contest url : " + url)
 
 CF_Path = "/Users/abhijayrajvansh/desktop/onlineJudge/codeforces/" + contest_name
 
 try : 
     os.mkdir(CF_Path)
 except FileExistsError:
-    print("[Looking For Problems]")
+    print("[Looking For Problems Beep.. Boop..]")
 
 pwd = os.getcwd()
 PATH = Service(pwd + "/chromedriver")
