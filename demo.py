@@ -239,12 +239,12 @@ def problem_H():
     download_testcases()
 
 problem_A()
-problem_B()
-problem_C()
+# problem_B()
+# problem_C()
 problem_D()
-problem_E()
-problem_F()
-problem_G()
+# problem_E()
+# problem_F()
+# problem_G()
 problem_H()
 
 dir = CF_Path + '/a'
