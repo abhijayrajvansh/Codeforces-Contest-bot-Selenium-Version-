@@ -65,6 +65,74 @@ def download_testcases():
    no_of_testcases = linear_search(arr, "input")
    print("Downloading... (Testcases Found:" + f'{Fore.GREEN}',str(no_of_testcases),f'{Fore.WHITE})')
 
+   if no_of_testcases == 4:
+      sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
+      sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
+      sample_input_2 = open(curr_prob_path + "/sample_input_2.txt", "w")
+      sample_output_2 = open(curr_prob_path + "/sample_output_2.txt", "w")
+      sample_input_3 = open(curr_prob_path + "/sample_input_3.txt", "w")
+      sample_output_3 = open(curr_prob_path + "/sample_output_3.txt", "w")
+      sample_input_4 = open(curr_prob_path + "/sample_input_4.txt", "w")
+      sample_output_4 = open(curr_prob_path + "/sample_output_4.txt", "w")
+
+      #solution file:-
+      solution_file_path = curr_prob_path + "/" + "main.cpp"
+      solution_file = open(solution_file_path, "w")
+      subprocess.run(["code", solution_file_path])
+
+      array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2, sample_input_3, sample_output_3, sample_input_4, sample_output_4]
+
+      n = len(arr)
+      file_num = -1
+      i = 0
+      while True:       
+         if i == n:
+            break
+
+         if arr[i] == "input" or arr[i] == "output":
+            i += 2
+            file_num += 1
+         
+         if file_num >= 0:
+            array_file[file_num].write(arr[i] + '\n')
+
+         i += 1
+
+   if no_of_testcases == 5:
+      sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
+      sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
+      sample_input_2 = open(curr_prob_path + "/sample_input_2.txt", "w")
+      sample_output_2 = open(curr_prob_path + "/sample_output_2.txt", "w")
+      sample_input_3 = open(curr_prob_path + "/sample_input_3.txt", "w")
+      sample_output_3 = open(curr_prob_path + "/sample_output_3.txt", "w")
+      sample_input_4 = open(curr_prob_path + "/sample_input_4.txt", "w")
+      sample_output_4 = open(curr_prob_path + "/sample_output_4.txt", "w")
+      sample_input_5 = open(curr_prob_path + "/sample_input_5.txt", "w")
+      sample_output_5 = open(curr_prob_path + "/sample_output_5.txt", "w")
+
+      #solution file:-
+      solution_file_path = curr_prob_path + "/" + "main.cpp"
+      solution_file = open(solution_file_path, "w")
+      subprocess.run(["code", solution_file_path])
+
+      array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2, sample_input_3, sample_output_3, sample_input_4, sample_output_4, sample_input_5, sample_output_5]
+
+      n = len(arr)
+      file_num = -1
+      i = 0
+      while True:       
+         if i == n:
+            break
+
+         if arr[i] == "input" or arr[i] == "output":
+            i += 2
+            file_num += 1
+         
+         if file_num >= 0:
+            array_file[file_num].write(arr[i] + '\n')
+
+         i += 1
+
    if no_of_testcases == 3:
       sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
       sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
