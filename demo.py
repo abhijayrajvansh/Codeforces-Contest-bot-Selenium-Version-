@@ -308,6 +308,6 @@ problem_G()
 problem_H()
 
 dir = CF_Path + '/a'
-print("Contest Problem A Dir: " + dir)
+print("Contest Problem A Dir:⬇\n" + dir)
 
 
