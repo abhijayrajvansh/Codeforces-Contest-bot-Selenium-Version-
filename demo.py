@@ -9,25 +9,24 @@ from selenium.webdriver.common.by import By
 from colorama import Fore
 import subprocess
 import os
+import sys
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 global url
 global curr_prob_path
 
-contest_name = input()
+
+contest_name = sys.argv[1]
 
 url = "https://codeforces.com/contest/" + contest_name
+
 print("contest url : " + url)
-# url = input("Enter The Codeforces Contest Link : ")
-# for char in url:
-#    if char.isdigit():
-#       contest_name += char
 
 CF_Path = "/Users/abhijayrajvansh/desktop/onlineJudge/codeforces/" + contest_name
 
 try : 
     os.mkdir(CF_Path)
 except FileExistsError:
-    print("Downloading TestCases...")
+    print("[Looking For Problems]")
 
 pwd = os.getcwd()
 PATH = Service(pwd + "/chromedriver")

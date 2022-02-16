@@ -1,9 +1,6 @@
-from multiprocessing import AuthenticationError
-
-
 #/
 #    author:   abhijayrajvansh
-#    created:  16.02.2022 14:47:05
+#    created:  16.02.2022 12:42:28
 #/
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -12,25 +9,24 @@ from selenium.webdriver.common.by import By
 from colorama import Fore
 import subprocess
 import os
+import sys
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 global url
 global curr_prob_path
 
-contest_name = input()
+
+contest_name = sys.argv[1]
 
 url = "https://codeforces.com/contest/" + contest_name
+
 print("contest url : " + url)
-# url = input("Enter The Codeforces Contest Link : ")
-# for char in url:
-#    if char.isdigit():
-#       contest_name += char
 
 CF_Path = "/Users/abhijayrajvansh/desktop/onlineJudge/codeforces/" + contest_name
 
 try : 
     os.mkdir(CF_Path)
 except FileExistsError:
-    print("Downloading TestCases...")
+    print("[Looking For Problems]")
 
 pwd = os.getcwd()
 PATH = Service(pwd + "/chromedriver")
@@ -87,6 +83,32 @@ def download_testcases():
    except FileExistsError:
     print("Downloading " + pb_char + "... (Testcases Found: " + f'{Fore.GREEN}',str(no_of_testcases), f'{Fore.WHITE}' + ')')
 
+
+
+    if no_of_testcases == 1:
+        sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
+        sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
+        #solution file:-
+        solution_file_path = curr_prob_path + "/" + pb_char + ".cpp"
+        solution_file = open(solution_file_path, "w")
+        subprocess.run(["code", solution_file_path])
+
+        array_file = [sample_input_1, sample_output_1]
+
+
+    if no_of_testcases == 2:
+        sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
+        sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
+        sample_input_2 = open(curr_prob_path + "/sample_input_2.txt", "w")
+        sample_output_2 = open(curr_prob_path + "/sample_output_2.txt", "w")
+        #solution file:-
+        solution_file_path = curr_prob_path + "/" + pb_char + ".cpp"
+        solution_file = open(solution_file_path, "w")
+        subprocess.run(["code", solution_file_path])
+
+        array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2]
+    
+
     if no_of_testcases == 3:
       sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
       sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
@@ -101,48 +123,6 @@ def download_testcases():
 
       array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2, sample_input_3, sample_output_3]
 
-      n = len(arr)
-      file_num = -1
-      i = 0
-      while True:       
-         if i == n:
-            break
-
-         if arr[i] == "input" or arr[i] == "output":
-            i += 2
-            file_num += 1
-        
-         if file_num >= 0:
-            array_file[file_num].write(arr[i] + '\n')
-
-         i += 1
-
-    if no_of_testcases == 2:
-        sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
-        sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
-        sample_input_2 = open(curr_prob_path + "/sample_input_2.txt", "w")
-        sample_output_2 = open(curr_prob_path + "/sample_output_2.txt", "w")
-        #solution file:-
-        solution_file_path = curr_prob_path + "/" + pb_char + ".cpp"
-        solution_file = open(solution_file_path, "w")
-        subprocess.run(["code", solution_file_path])
-
-        array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2]
-        n = len(arr)
-        file_num = -1
-        i = 0
-        while True:       
-            if i == n:
-                break
-
-            if arr[i] == "input" or arr[i] == "output":
-                i += 2
-                file_num += 1
-            
-            if file_num >= 0:
-                array_file[file_num].write(arr[i] + '\n')
-
-            i += 1
 
     if no_of_testcases == 4:
         sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
@@ -159,47 +139,7 @@ def download_testcases():
         subprocess.run(["code", solution_file_path])
 
         array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2, sample_input_3, sample_output_3, sample_input_4, sample_output_4]
-
-        n = len(arr)
-        file_num = -1
-        i = 0
-        while True:       
-            if i == n:
-                break
-
-            if arr[i] == "input" or arr[i] == "output":
-                i += 2
-                file_num += 1
-            
-            if file_num >= 0:
-                array_file[file_num].write(arr[i] + '\n')
-
-            i += 1
     
-    if no_of_testcases == 1:
-        sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
-        sample_output_1 = open(curr_prob_path + "/sample_output_1.txt", "w")
-        #solution file:-
-        solution_file_path = curr_prob_path + "/" + pb_char + ".cpp"
-        solution_file = open(solution_file_path, "w")
-        subprocess.run(["code", solution_file_path])
-
-        array_file = [sample_input_1, sample_output_1]
-        n = len(arr)
-        file_num = -1
-        i = 0
-        while True:       
-            if i == n:
-                break
-
-            if arr[i] == "input" or arr[i] == "output":
-                i += 2
-                file_num += 1
-            
-            if file_num >= 0:
-                array_file[file_num].write(arr[i] + '\n')
-
-            i += 1
 
     if no_of_testcases == 5:
         sample_input_1 = open(curr_prob_path + "/sample_input_1.txt", "w")
@@ -219,21 +159,21 @@ def download_testcases():
 
         array_file = [sample_input_1, sample_output_1, sample_input_2, sample_output_2, sample_input_3, sample_output_3, sample_input_4, sample_output_4, sample_input_5, sample_output_5]
 
-        n = len(arr)
-        file_num = -1
-        i = 0
-        while True:       
-            if i == n:
-                break
+    n = len(arr)
+    file_num = -1
+    i = 0
+    while True:       
+        if i == n:
+            break
 
-            if arr[i] == "input" or arr[i] == "output":
-                i += 2
-                file_num += 1
-            
-            if file_num >= 0:
-                array_file[file_num].write(arr[i] + '\n')
+        if arr[i] == "input" or arr[i] == "output":
+            i += 2
+            file_num += 1
+        
+        if file_num >= 0:
+            array_file[file_num].write(arr[i] + '\n')
 
-            i += 1
+        i += 1
 
 
 def problem_A():
