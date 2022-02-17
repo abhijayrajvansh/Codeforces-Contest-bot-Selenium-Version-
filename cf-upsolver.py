@@ -1,7 +1,9 @@
 #/
 #    author:   abhijayrajvansh
-#    created:  11.02.2022 00:18:09
+#    created:  17.02.2022 12:55:55
 #/
+from curses.ascii import isalpha
+from xml.dom.minidom import Element
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options #to by-pass chrome broswer notification, and other stuff
@@ -9,7 +11,7 @@ from selenium.webdriver.common.by import By
 from colorama import Fore
 import subprocess
 import os
-# from demo import url
+#````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 
 url = input("Enter The Problem URL : ")
 
@@ -26,8 +28,27 @@ driver = webdriver.Chrome(service = PATH, options = chromeOptions) # driver.maxi
 driver.minimize_window()
 driver.get(url) # launches the broswer and open url
 
-CF_Path = "/Users/abhijayrajvansh/desktop/onlineJudge/codeforces/upsolve" 
-curr_prob_path = CF_Path 
+pb_name = ""
+
+problem_name_data = driver.find_element(By.CLASS_NAME, "title").text
+# print(problem_name_data)
+for char in problem_name_data:
+   if char == " ":
+      pb_name += '-'
+   elif char.isalpha():
+      pb_name += char
+
+# print(pb_name)
+CF_Path = "/Users/abhijayrajvansh/desktop/onlineJudge/codeforces/upsolve/" + pb_name
+
+#directory creation
+try : 
+   os.mkdir(CF_Path)
+except FileExistsError:
+   print("[Looking For Problems Beep.. Boop..]")
+
+#global path
+curr_prob_path = CF_Path
 
 def linear_search (arr, element):
 
