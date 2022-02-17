@@ -10,10 +10,12 @@ from selenium.webdriver.chrome.options import Options #to by-pass chrome broswer
 from selenium.webdriver.common.by import By
 from colorama import Fore
 import subprocess
+import sys
 import os
 #````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
 
-url = input("Enter The Problem URL : ")
+# url = input("Enter The Problem URL : ")
+url = sys.argv[1]
 
 pwd = os.getcwd()
 PATH = Service(pwd + "/chromedriver")
