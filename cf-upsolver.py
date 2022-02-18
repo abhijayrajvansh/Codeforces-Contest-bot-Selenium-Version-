@@ -251,4 +251,4 @@ download_testcases()
 driver.quit()
 
 dir = CF_Path 
-print("Contest Problem A Dir: " + dir)
+print("Contest Problem A Dir:⬇\n" + dir)
