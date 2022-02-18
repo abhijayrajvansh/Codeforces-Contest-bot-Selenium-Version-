@@ -1,4 +1,5 @@
-#Codeforces Contest Bot
+
+    #Codeforces Contest Bot
     function cf_contest_bot
         # Directory location of Codeforces Bot
         /Users/abhijayrajvansh/Desktop/development/projects/Codeforces-Contest-Bot && python main.py $argv
@@ -30,7 +31,6 @@
 
     function run # ABHIJAY_DEBUG FILE_NAME.cpp
         echo "Compiling" $argv.cpp" with G++17..."
-        echo
         g++ -std=c++17 $argv.cpp -o a.out
         sleep 1
         if test -f sample_input_1.txt;
@@ -50,7 +50,7 @@
     end
 
     function runsamples # runnig and testing sample testcases
-        echo "[ABHIJAY_DEBUG MODE] Compiling main.cpp with G++17." \n
+        echo "Compiling main.cpp with G++17..." \n
         sleep 1
         #navigating to problem dir:
         cd ..
@@ -112,8 +112,8 @@
             end
         end
     end
-    function runtestcases # runnig  and testing sample testcases
-        echo "[ABHIJAY_DEBUG MODE] Compiling main.cpp with G++17." \n
+    function runall # runnig  and testing sample testcases
+        echo "Compiling main.cpp with G++17..."
         sleep 1
         # Compiling file
         g++ -std=c++17 main.cpp -o main.out
@@ -165,24 +165,3 @@
         end
     end
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    function crun # ABHIJAY_DEBUG FILE_NAME
-        echo "Compiling" $argv.cpp "with G++17..."
-        #echo "Input: "
-        g++ -std=c++17 $argv.cpp -o a.out && ./a.out
-    end
-    function deb-timed # ABHIJAY_DEBUG FILE_NAME + gtimeout 5 sec
-        echo "[ABHIJAY_DEBUG MODE] Compiling" $argv.cpp "with G++17..."
-        echo "Input: "
-        g++ -std=c++17 -DABHIJAY_DEBUG $argv.cpp -o a.out && gtimeout 3s ./a.out
-    end
-
-    function compare
-        if cmp -s sample_output_1.txt my_output_1.txt;
-            printf 'The files are same'
-        else
-            printf 'The files are different'
-            echo ""
-            diff -y -W 70 sample_output_1.txt my_output_1.txt
-        end
-    end
