@@ -41,7 +41,7 @@ for char in problem_name_data:
       pb_name += char
 
 # print(pb_name)
-CF_Path = "/Users/abhijayrajvansh/desktop/onlineJudge/codeforces/upsolve/" + pb_name
+CF_Path = "/Users/abhijayrajvansh/desktop/codeforces/upsolve/" + pb_name
 
 #directory creation
 try : 

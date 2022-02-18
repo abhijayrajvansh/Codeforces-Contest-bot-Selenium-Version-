@@ -19,7 +19,7 @@ contest_name = sys.argv[1]
 url = "https://codeforces.com/contest/" + contest_name
 print("Contest url : " + url)
 
-CF_Path = "/Users/abhijayrajvansh/desktop/onlineJudge/codeforces/" + contest_name
+CF_Path = "/Users/abhijayrajvansh/desktop/codeforces/" + contest_name
 
 try : 
     os.mkdir(CF_Path)
@@ -239,12 +239,12 @@ def problem_H():
     download_testcases()
 
 problem_A()
-# problem_B()
-# problem_C()
+problem_B()
+problem_C()
 problem_D()
-# problem_E()
-# problem_F()
-# problem_G()
+problem_E()
+problem_F()
+problem_G()
 problem_H()
 
 dir = CF_Path + '/a'
