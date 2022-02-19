@@ -3,6 +3,7 @@
 #    created:  17.02.2022 12:55:55
 #/
 from curses.ascii import isalpha
+from posixpath import dirname
 from xml.dom.minidom import Element
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -41,7 +42,8 @@ for char in problem_name_data:
       pb_name += char
 
 # print(pb_name)
-CF_Path = "/Users/abhijayrajvansh/desktop/codeforces/upsolve/" + pb_name
+DIR_Name = "A2OJ-Ladder-A"
+CF_Path = "/Users/abhijayrajvansh/desktop/codeforces/" + DIR_Name + "/" + pb_name
 
 #directory creation
 try : 
