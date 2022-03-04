@@ -5,7 +5,7 @@
 # This bot can perform following operations: 
 
 ```
-Chrome Version : 90.0.4430.72
+NOTE: This software is compatible Chrome Version : 90.0.4430.72 only !
 ```
 
 - Particular problem solve             : Status ✅
