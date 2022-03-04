@@ -2,7 +2,11 @@
 
 © 2022 Abhijay Rajvansh, All rights reserved.
 
-# This bot can perform following operations: Chrome Version : 90.0.4430.72
+# This bot can perform following operations: 
+
+```
+Chrome Version : 90.0.4430.72
+```
 
 - Particular problem solve             : Status ✅
 - problems directories creator         : Status ✅
