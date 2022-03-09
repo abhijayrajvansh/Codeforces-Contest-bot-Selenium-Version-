@@ -39,8 +39,9 @@ for char in problem_name_data:
       pb_name += char
 
 # print(pb_name)
-DIR_Name = "A2OJ-Ladder-A"
-CF_Path = "/Users/abhijayrajvansh/desktop/codeforces/" + DIR_Name + "/" + pb_name
+A2OJ = "A2OJ-Ladder-A"
+UPSOLVE = "UPSOLVE-1000"
+CF_Path = "/Users/abhijayrajvansh/desktop/codeforces/" + UPSOLVE + "/" + pb_name
 
 #directory creation
 try : 
