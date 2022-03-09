@@ -2,9 +2,6 @@
 #    author:   abhijayrajvansh
 #    created:  17.02.2022 12:55:55
 #/
-from curses.ascii import isalpha
-from posixpath import dirname
-from xml.dom.minidom import Element
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options #to by-pass chrome broswer notification, and other stuff
@@ -28,7 +25,7 @@ chromeOptions.add_argument("--disable-notifications") # chromeOptions.add_experi
 
 # driver setup:
 driver = webdriver.Chrome(service = PATH, options = chromeOptions) # driver.maximize_window() driver.minimize_window()
-driver.minimize_window()
+# driver.minimize_window()
 driver.get(url) # launches the broswer and open url
 
 pb_name = ""
